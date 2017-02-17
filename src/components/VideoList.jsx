@@ -6,7 +6,7 @@ var VideoList = (props) => {
       <VideoListEntry video={item} src={item.snippet.thumbnails.default.url}/>
     )}
   </div>
-)};
+); };
 
 
 // PropTypes tell other developers what `props` a component expects

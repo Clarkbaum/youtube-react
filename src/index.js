@@ -8,3 +8,7 @@ ReactDOM.render(
   <VideoList />,
   document.getElementById('media-body')
 );
+ReactDOM.render(
+  <VideoPlayer />,
+  document.getElementById('embed-responsive-item')
+);

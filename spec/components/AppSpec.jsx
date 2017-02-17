@@ -15,6 +15,7 @@ describe('App', function() {
   });
 
   it('should be a stateful class component', function() {
+    console.log("React.Component.isPrototypeOf(App)", React.Component.isPrototypeOf(App))
     expect(React.Component.isPrototypeOf(App)).to.be.true;
   });
 
