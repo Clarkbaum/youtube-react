@@ -1,9 +1,12 @@
-var VideoList = (props) => {
+var VideoList = ({videos, onTitleClick}) => {
 
   return (
   <div className="video-list media">
-    {props.videos.map(item=>
-      <VideoListEntry video={item} src={item.snippet.thumbnails.default.url} onTitleClick={props.onTitleClick}/>
+    {videos.map(video=>
+      <VideoListEntry 
+      video={video}
+      key={video.etag}
+      onTitleClick={onTitleClick}/> 
     )}
   </div>
 ); };

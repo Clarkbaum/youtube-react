@@ -4,10 +4,30 @@ class App extends React.Component{
 
     this.state = {
       currVid: exampleVideoData[0],
-      vidList: exampleVideoData,
+      vidList: exampleVideoData
+
+      // currVid: null,
+      // vidList: [],
     };
 
   }
+  componentDidMount() {
+    this.getYouTubeVideos('dogs');
+  }
+
+  getYouTubeVideos(query){
+    var options ={
+      key: this.props.API_KEY,
+      query: query
+    };
+    this.props.searchYouTube(options, (videos) => 
+      this.setState({
+        currVid: videos[0],
+        vidList: videos
+      })
+    );
+  }
+
 
   onTitleClick(clickedVid){
     this.setState({
@@ -15,11 +35,10 @@ class App extends React.Component{
     })
   }
 
-
   render(){
     return (
       <div>
-        <Nav />
+        <Nav onSearchChange={this.getYouTubeVideos.bind(this)}/>
         <div className="col-md-7">
         <VideoPlayer video={this.state.currVid}/>
         </div>
