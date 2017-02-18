@@ -15,7 +15,6 @@ describe('App', function() {
   });
 
   it('should be a stateful class component', function() {
-    console.log("React.Component.isPrototypeOf(App)", React.Component.isPrototypeOf(App))
     expect(React.Component.isPrototypeOf(App)).to.be.true;
   });
 
@@ -36,6 +35,7 @@ describe('App', function() {
 
     var videoEntryTitleElements = scryRenderedDOMComponentsWithClass(app, 'video-list-entry-title');
 
+    console.log("videoEntryTitleElements", videoEntryTitleElements)
     videoEntryTitleElements.forEach((videoEntryTitle) => {
       Simulate.click(videoEntryTitle);
       var player = findRenderedDOMComponentWithClass(app, 'video-player');
