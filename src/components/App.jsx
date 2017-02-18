@@ -1,26 +1,30 @@
 class App extends React.Component{
   constructor(props){
     super(props);
-    console.log("exampleVideoData", exampleVideoData)
 
-    //we need a state to mange which video we want
+    this.state = {
+      currVid: exampleVideoData[0],
+      vidList: exampleVideoData,
+    };
+
   }
 
-  //dont move!!
-  onTitleClick(event){
-    //play clicked song
-    console.log("on title click ", this)
+  onTitleClick(clickedVid){
+    this.setState({
+      currVid: clickedVid
+    })
   }
+
 
   render(){
     return (
       <div>
         <Nav />
         <div className="col-md-7">
-        <VideoPlayer video={exampleVideoData[1]}/>
+        <VideoPlayer video={this.state.currVid}/>
         </div>
         <div className="col-md-5">
-          <VideoList videos={exampleVideoData}/>
+          <VideoList videos={this.state.vidList} onTitleClick={this.onTitleClick.bind(this)}/>
         </div>
       </div>
     )
@@ -31,8 +35,3 @@ class App extends React.Component{
 // In the ES6 spec, files are "modules" and do not share a top-level scope
 // `var` declarations will only exist globally where explicitly defined
 window.App = App;
-
-//   <VideoPlayer video={exampleVideoData[0]}/>
-          // {exampleVideoData.map(item=>
-          //   <VideoPlayer video={exampleVideoData[item]}/>
-          // )}
